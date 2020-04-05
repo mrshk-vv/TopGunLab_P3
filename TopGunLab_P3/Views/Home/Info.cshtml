@@ -1,0 +1,44 @@
+﻿@model Product
+
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Info</title>
+</head>
+<body>
+    <div class="container">
+        <div class="col-lg-12">
+            <p align="center">Назание продукта : @Model.Name</p>
+            <p align="center">Количество продукта : @Model.Count @Model.Unit</p>
+            <p align="center"><input type="submit" value="Удалить продукт" data-toggle="modal" data-target="#delete" /></p>
+        </div>
+    </div>
+</body>
+</html>
+
+
+<!-- Modal -->
+<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content text-center">
+            <form method="post" asp-controller="Admin" asp-action="СreateFacultyConfirmed">
+                <div class="modal-header " asp-validation-summary="ModelOnly"></div>
+
+                <div class="modal-body">
+                    <p><strong>Вы точно хотите удалить продукт ?</strong></p>
+                </div>
+
+                <div class="modal-footer text-center">
+                    <a class="btn btn-danger" asp-controller="Home" asp-action="DeleteProduct" asp-route-name="@Model.Name" method="get">Да </a>
+                    <a class="btn btn-info" asp-controller="Home" asp-action="Index">Нет</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

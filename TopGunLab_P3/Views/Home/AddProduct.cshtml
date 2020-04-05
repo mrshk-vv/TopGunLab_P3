@@ -1,0 +1,44 @@
+﻿@model Product
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Добавить продукт</title>
+</head>
+<body>
+    <div class="container">
+        <form method="post" asp-controller="Home" asp-action="AddProductConfirmed">
+            <div asp-validation-summary="ModelOnly"></div>
+
+            <div>
+                <label asp-for="Name"><strong>Название продукта</strong></label><br />
+                <input asp-for="Name" class="form-control" placeholder="Название" />
+            </div>
+
+            <div>
+                <label asp-for="Count"><strong>Единиц</strong></label><br />
+                <select asp-for="Count" class="form-control">
+                    <option value="">Выбирите кол-во единиц</option>
+                    <option value="1">1</option>
+                    <option value="3">3</option>
+                    <option value="5">5</option>
+                    <option value="7">7</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                </select>
+            </div>
+
+            <div>
+                <label asp-for="Unit"><strong>Единица измерения</strong></label><br />
+                <select asp-for="Unit" asp-items="Html.GetEnumSelectList<UnitVariables>()"></select>
+            </div>
+
+            <button class="btn btn-dark" type="submit">Добавить продукт</button>
+
+        </form>
+    </div>
+</body>
+</html>

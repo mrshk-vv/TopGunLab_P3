@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Product>
+@{
+    Layout = "_Layout";
+}
+
+<a asp-controller="Home" asp-action="AddProduct">Добавить продукт</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Название продукта</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Product product in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => product.Name)</td>
+                <td>
+                    <a asp-controller="Home" asp-action="Info" asp-route-name="@product.Name">Детальная информация</a> |
+                    <a asp-controller="Home" asp-action="Edit" asp-route-name="@product.Name">Редактировать</a> |
+                    @*<a asp-controller="Home" asp-action="DeleteProduct" asp-route-name="@product.Name">Удалить</a>*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
